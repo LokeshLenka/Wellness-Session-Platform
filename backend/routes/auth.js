@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Token = require("../models/Token");
 const logger = require("../utils/logger");
 
 const router = express.Router();
@@ -40,43 +41,49 @@ router.post("/register", async (req, res) => {
   }
 });
 
-
 // Login route
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    logger.info(`Login attempt for email: ${email}`);
 
-    // Find user by email
+    // Find user
     const user = await User.findOne({ email });
     if (!user) {
-      logger.warn(`Login attempt failed: User not found for email: ${email}`);
-      return res.status(404).json({ message: "User not found" });
+      return res.status(401).json({ message: "Invalid credentials" });
     }
 
     // Check password
     const isMatch = await bcrypt.compare(password, user.password_hash);
     if (!isMatch) {
-      logger.warn(
-        `Login attempt failed: Incorrect password for email: ${email}`
-      );
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Generate JWT
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "6h",
+    // Create JWT token
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "24h",
     });
 
-    // Log successful login and respond with token
-    logger.info(`Login successful for email: ${email}`);
+    // Store token in database
+    await Token.create({
+      user: user.id,
+      token: token,
+      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours from now
+    });
+
     res.json({
       success: true,
       message: "Login successful",
       token: token,
+      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours from now
     });
   } catch (error) {
-    logger.error(`Login failed: ${error.message}`);
+    console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 });
