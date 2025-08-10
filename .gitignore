@@ -1,0 +1,6 @@
+# Logs
+logs/combined.log
+logs/error.log
+
+# Node modules
+node_modules/

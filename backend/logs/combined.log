@@ -1,0 +1,9 @@
+[2025-08-10 22:34:03] WARN: Registration attempted with existing email: test@examplee.com
+[2025-08-10 22:34:31] INFO: New user registered with email: test@exmplee.com
+[2025-08-10 22:35:55] INFO: New user registered with email: test@exmplee
+[2025-08-10 22:38:06] INFO: Login attempt for email: test@exmplee
+[2025-08-10 22:38:21] INFO: Login attempt for email: test@exmplee
+[2025-08-10 22:39:02] INFO: Login attempt for email: test@exmplee
+[2025-08-10 22:39:02] INFO: Login successful for email: test@exmplee
+[2025-08-10 22:41:25] INFO: Login attempt for email: test@exmplee
+[2025-08-10 22:41:25] INFO: Login successful for email: test@exmplee
