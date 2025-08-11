@@ -135,7 +135,6 @@ Wellness-Session-Platform/
 npm run dev      # Start development server
 npm start        # Start production server
 npm test        # Run tests
-npm run lint    # Run linter
 ```
 
 ### Frontend
@@ -143,7 +142,6 @@ npm run lint    # Run linter
 npm run dev      # Start development server
 npm run build    # Build for production
 npm run preview  # Preview production build
-npm run lint     # Run linter
 ```
 
 ## Deployment
@@ -159,16 +157,3 @@ npm run lint     # Run linter
 2. Deploy static files to web server
 3. Configure CORS and API endpoints
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For support, please open an issue in the GitHub repository or contact the maintainers directly.
-
-## Acknowledgments
-
-- Node.js community
-- React community
-- All contributors who have helped with code and documentation
