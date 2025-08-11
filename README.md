@@ -47,8 +47,6 @@ Wellness-Session-Platform/
 ### Frontend
 - React
 - TypeScript
-- Vite
-- CSS Modules
 
 ## Getting Started
 
