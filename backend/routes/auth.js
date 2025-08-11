@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const Token = require("../models/Token");
 const logger = require("../utils/logger");
+const auth = require("../middleware/auth");
 
 const router = express.Router();
 
@@ -84,6 +85,41 @@ router.post("/login", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// Get user profile
+router.get("/profile", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password_hash');
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
+  } catch (error) {
+    logger.error(`Profile fetch error: ${error.message}`);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// Logout user
+router.post("/logout", auth, async (req, res) => {
+  try {
+    // Get token from header
+    const token = req.header('Authorization').replace('Bearer ', '');
+    
+    // Blacklist the token
+    await Token.create({
+      token,
+      user: req.user.id,
+      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours
+    });
+
+    logger.info(`User ${req.user.id} logged out successfully`);
+    res.json({ message: "Logged out successfully" });
+  } catch (error) {
+    logger.error(`Logout error: ${error.message}`);
     res.status(500).json({ message: "Server error" });
   }
 });

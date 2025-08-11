@@ -1,0 +1,18 @@
+[2025-08-11 18:31:22] ERROR: Error fetching public sessions: Cannot call `sessions.find()` before initial connection is complete if `bufferCommands = false`. Make sure you `await mongoose.connect()` if you have `bufferCommands = false`.
+[2025-08-11 18:42:00] ERROR: Registration failed: Cannot call `users.findOne()` before initial connection is complete if `bufferCommands = false`. Make sure you `await mongoose.connect()` if you have `bufferCommands = false`.
+[2025-08-11 18:42:19] ERROR: Registration failed: Cannot call `users.findOne()` before initial connection is complete if `bufferCommands = false`. Make sure you `await mongoose.connect()` if you have `bufferCommands = false`.
+[2025-08-11 18:44:11] ERROR: Registration failed: Cannot call `users.findOne()` before initial connection is complete if `bufferCommands = false`. Make sure you `await mongoose.connect()` if you have `bufferCommands = false`.
+[2025-08-11 19:19:34] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: my is not defined
+[2025-08-11 19:19:37] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: my is not defined
+[2025-08-11 19:19:38] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: my is not defined
+[2025-08-11 19:25:54] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: id is not defined
+[2025-08-11 19:25:56] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: id is not defined
+[2025-08-11 19:25:59] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: id is not defined
+[2025-08-11 19:26:02] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: id is not defined
+[2025-08-11 19:38:32] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: Session validation failed: content: Session content is required, duration: Duration is required, description: Description is required
+[2025-08-11 19:38:33] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: Session validation failed: content: Session content is required, duration: Duration is required, description: Description is required
+[2025-08-11 19:41:08] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: Session validation failed: content: Session content is required, duration: Duration is required, description: Description is required
+[2025-08-11 19:41:10] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: Session validation failed: content: Session content is required, duration: Duration is required, description: Description is required
+[2025-08-11 19:49:05] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: Session validation failed: content: Session content is required, duration: Duration is required, description: Description is required
+[2025-08-11 19:49:06] ERROR: Session publish failed for user 6898d173452d471df7b5d54d: Session validation failed: content: Session content is required, duration: Duration is required, description: Description is required
+[2025-08-11 20:50:07] ERROR: Error deleting session save-draft: Cast to ObjectId failed for value "save-draft" (type string) at path "_id" for model "Session"
